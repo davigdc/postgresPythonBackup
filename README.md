@@ -1,19 +1,35 @@
-# postgersPythonBackup
+# 💡 postgresPythonBackup
 Este projeto é parte do curso "Introduction to Python Development" da plataforma "A Cloud Guru". A finalidade é criar um CLI "pgbackup" que nos permite realizar o dump de um banco de dados postgresSQL e exportar para um diretório local ou para um bucket S3 na AWS.
 
 ---
 ## pgbackup
-CLI for backing up remote PostgreSQL databases locally or to AWS S3.
+CLI para realizar backup remoto do banco de dados PostgreSQL localmente ou para AWS S3.
 
 ---
-## Usage
-Pass in a full database URL, the storage driver, and destination.
-S3 Example w/ bucket name:
+## Uso
+Ajuda do comando:
+```
+$ pgbackup --help
+usage: pgbackup [-h] --driver DRIVER DESTINATION url
+
+Back up PostgreSQL databases locally or to AWS S3.
+
+positional arguments:
+  url                   URL of the database to backup
+
+options:
+  -h, --help            show this help message and exit
+  --driver DRIVER DESTINATION, -d DRIVER DESTINATION
+                        how & where to store backup
+```
+
+Passe a URL do banco de dados completo, o driver de armazenamento e o destino:
+Exemplo S3:
 ```
 $ pgbackup postgres://bob@example.com:5432/db_one --driver s3 backups
 ```
 
-Local Example w/ local path:
+Exemplo local:
 ```
 $ pgbackup postgres://bob@example.com:5432/db_one --driver local /
 var/local/db_one/backups
@@ -49,23 +65,22 @@ var/local/db_one/backups
     ```
 
 ---
-## Installation From Source
+## Instalar da fonte
 
-To install the package after you've cloned the repository, you'll
-want to run the following command from within the project directory:
+Para instalar o package depois de clonar o repositório:
 ```
 $ pip install --user -e .
 ```
 
 ---
-## Preparing for Development
+## Preparar para Desenvolvimento
 
-Follow these steps to start developing with this project:
+Siga estes passos:
 
-1. Ensure `pip` and `pipenv` are installed
-2. Clone repository: `git clone git@github.com:davigdc/postgersPythonBackup`
-3. `cd` into the repository
-4. Activate virtualenv: `pipenv shell`
-5. Install dependencies: `pipenv install`
+1. Garanta `pip` e `pipenv` estão instalados
+2. Clone o repositório: `git clone git@github.com:davigdc/postgresPythonBackup`
+3. `cd` para o diretório
+4. Ative o virtualenv: `pipenv shell`
+5. Instale as dependências: `pipenv install`
 
 ---
